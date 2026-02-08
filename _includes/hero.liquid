@@ -1,0 +1,35 @@
+{% assign hero = page.hero | default: site.hero %}
+{% assign hero_animate = hero.animate | default: false %}
+{% if page.layout == 'home' %}{% assign hero_animate = true %}{% endif %}
+{% assign hero_contact = hero.location or hero.phone or hero.cta_label %}
+<section class="hero{% if hero_animate %} hero--animate{% endif %}{% if hero_contact %} hero--contact{% endif %}" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true">
+    {% if hero.images and hero.images.size > 0 %}
+      {% for img in hero.images %}
+      <div class="hero-bg-slide hero-bg-slide--fade" style="background-image: url('{{ img | escape }}');"></div>
+      {% endfor %}
+    {% elsif hero.image %}
+    <div class="hero-bg-slide hero-bg-slide--single" style="background-image: url('{{ hero.image | escape }}');"></div>
+    {% endif %}
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="hero-content">
+    {% if hero_contact %}
+    <div class="hero-contact-block">
+      {% if hero.location %}<p class="hero-contact-location">{{ hero.location }}</p>{% endif %}
+      {% if hero.phone %}<p class="hero-contact-phone">{{ hero.phone }}</p>{% endif %}
+      {% if hero.cta_label %}
+      <a href="#{{ hero.cta_anchor | default: 'app-contact' }}" class="hero-cta-btn">{{ hero.cta_label }}</a>
+      {% endif %}
+    </div>
+    {% else %}
+    <h1 class="hero-title"><a href="{{ '/' | relative_url }}" class="hero-title-link">{{ hero.title | default: "NEW DAY" }}</a></h1>
+    <p class="hero-tagline">{{ hero.tagline | default: "CUSTOM HOME BUILDERS" }}</p>
+    {% endif %}
+  </div>
+  {% if hero.show_scroll_indicator %}
+  <a href="#main" class="hero-scroll-indicator" aria-label="Scroll to content">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+  {% endif %}
+</section>

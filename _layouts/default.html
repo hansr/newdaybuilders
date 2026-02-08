@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.liquid %}
+<body class="layout-default {{ page.class }}">
+  {% include header.liquid %}
+  {% if page.hero %}
+  <div class="hero-wrap">
+    {% include hero.liquid %}
+  </div>
+  {% endif %}
+  <main id="main" class="main" role="main">
+    <article class="container">
+      {{ content }}
+    </article>
+  </main>
+  {% include footer.liquid %}
+</body>
+</html>

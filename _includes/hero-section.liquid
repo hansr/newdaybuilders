@@ -1,0 +1,6 @@
+{% comment %} Full-bleed section hero (e.g. for Projects, About, Contact inner pages) {% endcomment %}
+{% assign section_title = page.section_hero | default: page.title %}
+<section class="section-hero" aria-label="Section">
+  <div class="section-hero-bg" aria-hidden="true"></div>
+  <h1 class="section-hero-title">{{ section_title | upcase }}</h1>
+</section>

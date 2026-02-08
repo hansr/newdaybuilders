@@ -1,0 +1,33 @@
+.site-footer {
+  padding: 2rem $container-padding;
+  border-top: 1px solid $color-border;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: $container-max;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-nav a {
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: $color-text-muted;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.75rem;
+  color: $color-text-muted;
+  letter-spacing: 0.05em;
+}

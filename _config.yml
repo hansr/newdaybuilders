@@ -1,0 +1,51 @@
+# New Day Builders - Custom Home Builders
+name: New Day Builders
+title: New Day Builders
+description: Custom home building in your region. Quality craftsmanship for your dream home.
+url: ""
+baseurl: ""
+lang: en
+
+# Theme / build
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-sass-converter
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Paths
+path:
+  images: "/assets/img/"
+  styles: "/css/"
+  scripts: "/assets/js/"
+
+# Navigation (Marker-style: Projects, About, Contact)
+nav:
+  - title: Projects
+    url: "/projects/"
+  - title: About
+    url: "/about/"
+  - title: Contact
+    url: "/contact/"
+
+# Social (optional)
+social:
+  twitter: ""
+  instagram: ""
+  facebook: ""
+  # linkedin: ""
+
+# Footer
+copyright: "New Day Builders. All rights reserved."
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default

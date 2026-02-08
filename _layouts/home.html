@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.liquid %}
+<body class="layout-home page-home {{ page.class }}">
+  {% include header.liquid %}
+  <div class="hero-wrap">
+    {{ content }}
+  </div>
+  {% include footer.liquid %}
+</body>
+</html>

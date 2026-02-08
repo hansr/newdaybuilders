@@ -1,0 +1,15 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <nav class="footer-nav" aria-label="Footer">
+      {% for item in site.nav %}
+      <a href="{{ item.url | relative_url }}">{{ item.title | upcase }}</a>
+      {% endfor %}
+    </nav>
+    <p class="footer-copy">{{ site.copyright }}</p>
+  </div>
+</footer>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+{% if page.vue_app %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js" defer></script>
+<script src="{{ page.vue_app | relative_url }}" defer></script>
+{% endif %}

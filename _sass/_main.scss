@@ -1,0 +1,313 @@
+// Projects grid, forms, etc.
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-card-wrap {
+  list-style: none;
+}
+
+.project-card {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: $color-bg-dark;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.project-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition;
+}
+
+.project-card:hover img {
+  transform: scale(1.03);
+}
+
+.project-card-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem $container-padding;
+  margin: 0;
+  font-family: $font-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  background: linear-gradient(rgba(0, 0, 0, 0.65), transparent);
+  z-index: 1;
+}
+
+.project-card-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: $color-text-muted;
+}
+
+// Project modal
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 0;
+}
+
+.project-modal-box {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  max-height: calc(100vh - 2rem);
+  background: $color-bg-dark;
+  border: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e8eae9' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E") center no-repeat;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background $transition;
+}
+
+.project-modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.project-modal-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.project-modal-gallery {
+  position: relative;
+  flex: 0 0 55%;
+  min-width: 0;
+  background: $color-bg-darker;
+}
+
+.project-modal-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  max-height: 85vh;
+  object-fit: cover;
+  display: block;
+}
+
+.project-modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background $transition;
+  z-index: 2;
+}
+
+.project-modal-arrow:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.project-modal-arrow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid $color-text;
+  border-bottom: 2px solid $color-text;
+}
+
+.project-modal-arrow--prev {
+  left: 1rem;
+}
+
+.project-modal-arrow--prev::after {
+  transform: rotate(45deg);
+  margin-left: 6px;
+}
+
+.project-modal-arrow--next {
+  right: 1rem;
+}
+
+.project-modal-arrow--next::after {
+  transform: rotate(-135deg);
+  margin-right: 6px;
+}
+
+.project-modal-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.project-modal-title {
+  margin: 0 0 1rem;
+  font-family: $font-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: $color-text;
+}
+
+.project-modal-description {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $color-text-muted;
+}
+
+.project-modal-description p {
+  margin: 0 0 0.75rem;
+}
+
+.project-modal-description p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .project-modal-body {
+    flex-direction: column;
+  }
+
+  .project-modal-gallery {
+    flex: 0 0 auto;
+  }
+
+  .project-modal-gallery img {
+    max-height: 40vh;
+  }
+
+  .project-modal-content {
+    padding: 1.5rem;
+  }
+}
+
+.contact-form-wrap {
+  max-width: 32rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  color: $color-text-muted;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: $font-sans;
+  font-size: 1rem;
+  color: $color-text;
+  background: $color-bg-dark;
+  border: 1px solid $color-border;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: $color-text-muted;
+  opacity: 0.8;
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.875rem 1.75rem;
+  font-family: $font-sans;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-bg-darker;
+  background: $color-text;
+  border: none;
+  cursor: pointer;
+  transition: opacity $transition, background $transition;
+}
+
+.btn:hover {
+  opacity: 0.95;
+  background: $color-text-muted;
+}
+
+#app-contact {
+  margin-top: 1rem;
+}

@@ -1,0 +1,191 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  padding: 0 $container-padding;
+  background: transparent;
+  transition: background $transition;
+}
+
+body.header-scrolled .site-header {
+  background: $color-bg-darker;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  display: block;
+  font-family: $font-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: $color-text;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// On home, the hero title animates into this spot — hide the static logo
+.page-home .site-logo {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+// Once hero title has moved into header, don’t reserve space for the placeholder logo
+body.hero-title-anchored .site-logo {
+  display: none;
+}
+
+.logo-word {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1px $color-text;
+  text-stroke: 1px $color-text;
+}
+
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  color: $color-text;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 102;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform $transition, opacity $transition;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 101;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility $transition, opacity $transition;
+}
+
+.site-nav:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 320px;
+  padding: calc(#{$header-height} + 1rem) 2rem 2rem;
+  background: $color-bg-dark;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.3);
+}
+
+.nav-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  display: block;
+  font-size: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e8eae9' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E") center no-repeat;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-list a {
+  font-family: $font-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.12em;
+  color: $color-text;
+  display: block;
+  padding: 0.5rem 0;
+}
+
+.nav-social {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-social a {
+  display: inline-flex;
+  color: $color-text;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-social a svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+
+  .site-nav {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    background: none;
+  }
+
+  .nav-panel {
+    position: static;
+    max-width: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .nav-close { display: none; }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .nav-social { margin-top: 0; }
+}

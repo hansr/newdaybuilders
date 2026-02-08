@@ -1,0 +1,28 @@
+<header id="top" class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="New Day Builders home">
+      <span class="logo-word">NEW DAY</span>
+    </a>
+    <a href="#nav" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></a>
+    <nav id="nav" class="site-nav" aria-label="Main">
+      <div class="nav-panel">
+        <a href="#close" class="nav-close" aria-label="Close menu"></a>
+        <ul class="nav-list">
+          {% for item in site.nav %}
+          <li><a href="{{ item.url | relative_url }}"{% if item.target %} target="{{ item.target }}" rel="noopener"{% endif %}>{{ item.title | upcase }}</a></li>
+          {% endfor %}
+        </ul>
+        {% assign has_social = site.social.instagram != nil and site.social.instagram != '' or site.social.facebook != nil and site.social.facebook != '' %}
+        <div class="nav-social">
+          {% if site.social.twitter != nil and site.social.twitter != '' %}
+          <a href="{{ site.social.twitter }}" target="_blank" rel="noopener" aria-label="X (Twitter)">{% include icon-x.svg %}</a>
+          {% else %}
+          <a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)">{% include icon-x.svg %}</a>
+          {% endif %}
+          {% if site.social.instagram != nil and site.social.instagram != '' %}<a href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% include icon-instagram.svg %}</a>{% endif %}
+          {% if site.social.facebook != nil and site.social.facebook != '' %}<a href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% include icon-facebook.svg %}</a>{% endif %}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
