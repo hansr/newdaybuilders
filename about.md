@@ -13,6 +13,6 @@ hero:
 
 <div class="page-content container">
   <h2>Quality Craftsmanship in Your Region</h2>
-  <p>New Day Builders specializes in custom residential construction. From new builds to major renovations, we work with you to bring your vision to life with attention to detail and reliable execution.</p>
+  <p>We specialize in custom residential building projects - everything from off grid cabins to custom countertops to accessibility remodels to full home builds.</p>
   <p>Contact us to discuss your project and get a quote.</p>
 </div>
