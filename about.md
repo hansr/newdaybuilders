@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+permalink: /about/
 hero:
   title: ABOUT
   tagline: Who we are
