@@ -13,7 +13,7 @@ hero:
 ---
 
 <div class="page-content container">
-  <h2>Quality Craftsmanship in Your Region</h2>
+  <h2>Quality Craftsmanship in the greater Roseburg area</h2>
   <p>We specialize in custom residential building projects - everything from off grid cabins to custom countertops to accessibility remodels to full home builds.</p>
-  <p>Contact us to discuss your project and get a quote.</p>
+  <p>Contact us to discuss your project!</p>
 </div>
