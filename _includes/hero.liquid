@@ -6,10 +6,13 @@
   <div class="hero-bg" aria-hidden="true">
     {% if hero.images and hero.images.size > 0 %}
       {% for img in hero.images %}
-      <div class="hero-bg-slide hero-bg-slide--fade" style="background-image: url('{{ img | escape }}');"></div>
+      {% assign img_url = img | slice: 0, 4 %}
+      {% if img_url == 'http' %}{% assign img_src = img %}{% else %}{% assign img_src = img | relative_url %}{% endif %}
+      <div class="hero-bg-slide hero-bg-slide--fade" style="background-image: url('{{ img_src | escape }}');"></div>
       {% endfor %}
     {% elsif hero.image %}
-    <div class="hero-bg-slide hero-bg-slide--single" style="background-image: url('{{ hero.image | escape }}');"></div>
+    {% assign single_img = hero.image %}{% assign single_start = single_img | slice: 0, 4 %}{% if single_start == 'http' %}{% assign single_src = single_img %}{% else %}{% assign single_src = single_img | relative_url %}{% endif %}
+    <div class="hero-bg-slide hero-bg-slide--single" style="background-image: url('{{ single_src | escape }}');"></div>
     {% endif %}
     <div class="hero-bg-overlay"></div>
   </div>
