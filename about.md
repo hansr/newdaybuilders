@@ -7,6 +7,7 @@ hero:
   tagline: Who we are
   show_scroll_indicator: true
   images:
+    - /assets/img/hero/7_springs_lintel_team-low-project.jpg
     - https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80
     - https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1920&q=80
     - https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1920&q=80
