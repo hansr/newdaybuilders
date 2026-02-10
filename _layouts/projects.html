@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.liquid %}
+<body class="layout-default {{ page.class }}">
+  {% include header.liquid %}
+  {% if page.hero %}
+  <div class="hero-wrap">
+    {% include hero.liquid %}
+  </div>
+  {% endif %}
+  <main id="main" class="main" role="main">
+    <article class="container">
+      <div class="page-content">
+        <div id="projects-app" class="container"></div>
+      </div>
+      <script type="application/json" id="projects-data">{{ page.projects | jsonify }}</script>
+    </article>
+  </main>
+  {% include footer.liquid %}
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js" defer></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('projects-app');
+  var dataEl = document.getElementById('projects-data');
+  if (!el || !dataEl) return;
+  var projects = [];
+  try {
+    projects = JSON.parse(dataEl.textContent || '[]');
+  } catch (e) {}
+
+  var template = [
+    '<div class="projects-app-inner">',
+    '  <ul class="projects-grid">',
+    '    <li v-for="project in projects" :key="project.slug" class="project-card-wrap">',
+    '      <button type="button" class="project-card" @click="openModal(project)" :aria-label="\'View \' + project.title">',
+    '        <img :src="project.images[0]" :alt="project.title">',
+    '        <h3 class="project-card-title">{{ project.title }}</h3>',
+    '      </button>',
+    '    </li>',
+    '  </ul>',
+    '  <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" v-show="modalOpen" @click.self="closeModal">',
+    '    <div class="project-modal-backdrop" @click="closeModal"></div>',
+    '    <div class="project-modal-box" v-if="selectedProject" @click.stop>',
+    '      <button type="button" class="project-modal-close" aria-label="Close" @click="closeModal"></button>',
+    '      <div class="project-modal-body">',
+    '        <div class="project-modal-gallery">',
+    '          <img :src="selectedProject.images[currentImageIndex]" :alt="selectedProject.title">',
+    '          <button v-if="selectedProject.images.length > 1" type="button" class="project-modal-arrow project-modal-arrow--prev" aria-label="Previous image" @click.stop="prevImage"></button>',
+    '          <button v-if="selectedProject.images.length > 1" type="button" class="project-modal-arrow project-modal-arrow--next" aria-label="Next image" @click.stop="nextImage"></button>',
+    '        </div>',
+    '        <div class="project-modal-content">',
+    '          <h2 id="project-modal-title" class="project-modal-title">{{ selectedProject.title }}</h2>',
+    '          <div class="project-modal-description" v-html="selectedProject.description"></div>',
+    '        </div>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+    '</div>'
+  ].join('');
+
+  new Vue({
+    el: '#projects-app',
+    template: template,
+    data: function() {
+      return {
+        modalOpen: false,
+        selectedProject: null,
+        currentImageIndex: 0,
+        projects: projects
+      };
+    },
+    methods: {
+      openModal: function(project) {
+        this.selectedProject = project;
+        this.currentImageIndex = 0;
+        this.modalOpen = true;
+        document.body.style.overflow = 'hidden';
+      },
+      closeModal: function() {
+        this.modalOpen = false;
+        this.selectedProject = null;
+        document.body.style.overflow = '';
+      },
+      nextImage: function() {
+        if (!this.selectedProject || this.selectedProject.images.length <= 1) return;
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.selectedProject.images.length;
+      },
+      prevImage: function() {
+        if (!this.selectedProject || this.selectedProject.images.length <= 1) return;
+        this.currentImageIndex = (this.currentImageIndex - 1 + this.selectedProject.images.length) % this.selectedProject.images.length;
+      }
+    },
+    mounted: function() {
+      var vm = this;
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && vm.modalOpen) vm.closeModal();
+      });
+    }
+  });
+});
+  </script>
+</body>
+</html>
