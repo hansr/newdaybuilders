@@ -4,10 +4,10 @@ title: Projects
 permalink: /projects/
 hero:
   title: PROJECTS
-  tagline: Our work
+  tagline: Hand crafting legacy spaces
   show_scroll_indicator: true
   images:
-    - https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80
+    - /assets/img/hero/mercantile-gable-sm.jpg
     - https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80
     - https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920&q=80
 projects:

@@ -61,4 +61,8 @@ a {
   margin-bottom: 1rem;
   color: $color-text-muted;
   max-width: 65ch;
+
+  a {
+    text-decoration: underline;
+  }
 }
