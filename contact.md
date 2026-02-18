@@ -6,7 +6,7 @@ hero:
   title: CONTACT
   tagline: Get in touch
   location: "Roseburg, Oregon"
-  phone: "(541) 670 5332"
+  #phone: "(541) 670 5332"
   cta_label: "Send us a message"
   cta_anchor: "main"
   show_scroll_indicator: true
