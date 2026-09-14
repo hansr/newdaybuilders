@@ -9,7 +9,11 @@
         <a href="#close" class="nav-close" aria-label="Close menu"></a>
         <ul class="nav-list">
           {% for item in site.nav %}
+          {% if item.url contains '://' %}
+          <li><a href="{{ item.url }}"{% if item.target %} target="{{ item.target }}" rel="noopener"{% endif %}>{{ item.title | upcase }}</a></li>
+          {% else %}
           <li><a href="{{ item.url | relative_url }}"{% if item.target %} target="{{ item.target }}" rel="noopener"{% endif %}>{{ item.title | upcase }}</a></li>
+          {% endif %}
           {% endfor %}
         </ul>
         {% assign has_social = site.social.instagram != nil and site.social.instagram != '' %}

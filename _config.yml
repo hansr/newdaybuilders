@@ -23,7 +23,7 @@ path:
   styles: "/css/"
   scripts: "/assets/js/"
 
-# Navigation (Marker-style: Projects, About, Contact)
+# Navigation (Marker-style: Projects, About, Contact, Portal)
 nav:
   - title: Projects
     url: "/projects/"
@@ -31,6 +31,9 @@ nav:
     url: "/about/"
   - title: Contact
     url: "/contact/"
+  - title: Portal
+    url: "https://newdayprojects.diode.link/"
+    target: "_blank"
 
 # Social (optional)
 social:

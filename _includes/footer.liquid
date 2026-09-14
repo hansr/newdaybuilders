@@ -2,7 +2,11 @@
   <div class="footer-inner">
     <nav class="footer-nav" aria-label="Footer">
       {% for item in site.nav %}
+      {% if item.url contains '://' %}
+      <a href="{{ item.url }}"{% if item.target %} target="{{ item.target }}" rel="noopener"{% endif %}>{{ item.title | upcase }}</a>
+      {% else %}
       <a href="{{ item.url | relative_url }}">{{ item.title | upcase }}</a>
+      {% endif %}
       {% endfor %}
     </nav>
     <p class="footer-copy">{{ site.copyright }}</p>
